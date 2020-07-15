@@ -1,0 +1,154 @@
+.container-login
+{
+	color: #4682B4;
+	margin: 40px auto;
+	width: 1000px;
+	
+}
+
+.logo-main-left
+{
+	background-color: #FFFAFA;
+	border: 4px solid #4682B4;
+	border-radius: 25px;
+	float: left;
+	height: 502px;
+	margin-right: 15px;
+	padding: 30px;
+	width: 417px;
+}
+
+.logo-main-left i
+{
+	font-size: 150px;
+}
+
+.logo-main-left h2
+{
+	margin-top: 25px;
+	text-align: center;
+	font-size: 52px;	
+}
+
+.logo-main-left p
+{
+	font-size: 20px;
+	text-align: justify;
+}
+
+.login-main-right
+{
+	float: left;
+	height: 570px;
+	margin-left: 15px;
+	text-align: center;
+	width: 485px;
+}
+
+.login-main
+{
+	background-color: #FFFAFA;
+	border: 4px solid #4682B4;
+	border-radius: 25px;
+	height: 298px;
+	padding: 30px;
+	width: 417px;
+}
+
+.login-main h1
+{
+	font-size: 36px;
+	margin-bottom: 15px;
+	margin-top: 10px;
+}
+
+.register-main
+{
+	background-color: #FFFAFA;
+	border: 4px solid #4682B4;
+	border-radius: 25px;
+	height: 126px;
+	margin-top: 30px;
+	padding: 20px 30px;
+	width: 417px;
+}
+
+.register-main h3
+{
+	color: #000;
+	font-size: 20px;
+	margin-top: 10px;
+}
+
+input[type=email],
+input[type=password]
+{
+	width: 300px;
+	background-color: #EFEFEF;
+	color: #000;
+	border: 2px solid #BBB;
+	border-radius: 10px;
+	font-size: 20px;
+	padding: 10px;
+	box-sizing: border-box;
+	outline: none;
+	margin-top: 15px;
+}
+
+input[type=email]:focus,
+input[type=password]:focus
+{
+	box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+	border: 2px solid #B0C4DE;
+	background-color: #FAFAD2;
+	color: #2E8B57;
+}
+
+.login-main input[type=submit]
+{
+	width: 300px;
+	background-color: #2E8B57;
+	font-size:20px;
+	color: white;
+	padding: 15px 10px;
+	margin-top: 25px;
+	border: none;
+	border-radius: 15px;
+	cursor: pointer;
+	letter-spacing: 2px;
+	outline: none;
+}
+
+.login-main input[type=submit]:focus
+{
+	box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
+}
+
+.login-main input[type=submit]:hover
+{
+	background-color: #3CB371;
+}
+.register-main input[type=submit]
+{
+	width: 300px;
+	background-color: #4682B4;
+	font-size:20px;
+	color: white;
+	padding: 15px 10px;
+	margin-top: 0;
+	border: none;
+	border-radius: 15px;
+	cursor: pointer;
+	letter-spacing: 2px;
+	outline: none;
+}
+
+.register-main input[type=submit]:focus
+{
+	box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
+}
+
+.register-main input[type=submit]:hover
+{
+	background-color: #6495ED;
+}
