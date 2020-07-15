@@ -1,0 +1,7 @@
+body
+{
+	/* Background pattern from Toptal Subtle Patterns */
+	background-image: url("img/concrete_seamless.png");
+	font-family: 'Inconsolata', monospace;
+	margin: 0;
+}
