@@ -1,0 +1,132 @@
+.menu
+{
+	border-bottom: 2px solid #5F9EA0;
+	text-align: center;
+	width: 100%;
+	background-color: #4682B4;
+	padding-top: 5px;
+	float: left;
+}
+
+.menu ol
+{
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	font-size: 18px;
+	height: 40px;
+	line-height: 200%;
+	display: inline-block;
+}
+
+.menu ol > li
+{
+	float: left;
+	width: 200px;
+	height: 40px;
+}
+
+.menu ol > li a
+{
+	color: #FFF;
+	text-decoration: none;
+}
+
+ol > li a:hover
+{
+	color: #CFB53B;
+	cursor: pointer;
+}
+
+.menu ol > li:first-child
+{
+	text-align: left;
+}
+
+.menu ol > li > h2
+{
+	font-size: 20px;
+	margin-top: 0;
+}
+
+.container
+{
+	border-left: 2px solid #5F9EA0;
+	border-right: 2px solid #5F9EA0;
+	background-color: #FFFAFA;
+	margin: 0 auto;
+	min-height: 90vh;
+	padding: 20px 80px;
+	width: 840px;
+}
+
+.menu-main
+{
+	float: left;
+	
+}
+
+.description
+{
+	float: left;
+	margin-top: 80px;
+	padding-left: 80px;
+	text-align: justify;
+	width: 500px;
+}
+
+.menu-main > h1
+{
+	margin-bottom: 30px;
+	padding-left: 20px;
+	margin-top: 20px;
+}
+
+.options
+{
+	font-size: 20px;
+	margin-top: 30px;
+	text-align: center;
+	width: 260px;		
+
+}
+
+.options a
+{
+	padding: 12px;
+	border: 2px solid #4682B4;
+	border-radius: 30px;
+	color: #000;
+	background-color: #F0F8FF;
+	text-decoration: none;
+	display: block;
+}
+
+.options a:hover
+{
+	background-color: #4682B4;
+	border: 2px solid #CFB53B;
+	color: #CFB53B;
+}
+
+footer
+{
+	border-top: 2px solid #5F9EA0;
+	text-align: center;
+	width: 100%;
+	background-color: #4682B4;
+	opacity: 0.9;
+}
+
+footer h3
+{
+	color: #FFF;
+	margin: 0;
+	padding: 10px;
+}
+
+.sticky
+{
+	position: sticky;
+    top: 0px;
+}
