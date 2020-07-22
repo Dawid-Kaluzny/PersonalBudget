@@ -20,20 +20,21 @@
 
 .logo-main-left i
 {
-	font-size: 150px;
+	font-size: 140px;
 }
 
 .logo-main-left h2
 {
-	margin-top: 25px;
+	margin-top: 0;
+	margin-bottom: 0;
 	text-align: center;
-	font-size: 52px;	
+	font-size: 42px;	
 }
 
 .logo-main-left p
 {
 	font-size: 20px;
-	text-align: justify;
+	text-align: center;
 }
 
 .login-main-right
