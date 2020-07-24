@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+	<head>
+	
+		<meta charset="utf-8">
+		<title>Budżet domowy</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="budżet, domowy, finanse, wydatki, oszczędzanie, zarobki, bogactwo">
+		<meta name="author" content="Dawid Kałużny">
+		
+		<meta http-equiv="X-Ua-Compatible" content="IE=edge">
+		<link rel="stylesheet" href="main.css" />
+		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="finance.css" />
+		<link rel="stylesheet" href="css/fontello.css" />
+		
+		<link href="https://fonts.googleapis.com/css2?family=MuseoModerno:wght@400;600&display=swap" rel="stylesheet">
+
+		<script src="time.js"></script>
+    
+	</head>
+
+	<body>
+
+		<header class="sticky">
+		
+			<nav>
+				
+				<div class="menu">
+				
+					<ol>
+						<li><h2><a href="#"><i class="icon-money"></i> Budżet domowy</a></h2></li>
+						<li><a href="#"><i class="icon-money-1"></i> Dodaj przychód</a></li>
+						<li><a href="#"><i class="icon-shopping-basket"></i> Dodaj wydatek</a></li>
+						<li><a href="#"><i class="icon-balance-scale"></i> Przeglądaj bilans</a></li>
+						<li><a href="#"><i class="icon-cog"></i> Ustawienia</a></li>
+						<li><a href="#"><i class="icon-logout"></i> Wyloguj się</a></li>
+					</ol>
+					
+				</div>
+				
+			</nav>
+			
+		</header>
+		
+		<main>
+		
+			<div class="container">
+			
+				<article>
+			
+					<div class="finance">
+				
+						<h1><i class="icon-shopping-basket"></i> Dodaj wydatek</h1>
+						
+						<form>
+						
+							<label class="input-right">Kwota <input type="number" step="0.01" required></label>
+							
+							<label class="input-right">Data <input type="date" id="time"></label>
+							
+							<p>Sposób płatności:</p>
+							<div><label><input type="radio" name="payment" checked> gotówka</label></div>
+							<div><label><input type="radio" name="payment"> karta debetowa</label></div>
+							<div><label><input type="radio" name="payment"> karta kredytowa</label></div>
+							
+							<p>Kategoria:</p>
+							<div><label><input type="radio" name="expense-category" checked> jedzenie</label></div>
+							<div><label><input type="radio" name="expense-category"> mieszkanie</label></div>
+							<div><label><input type="radio" name="expense-category"> transport</label></div>
+							<div><label><input type="radio" name="expense-category"> telekomunikacja</label></div>
+							<div><label><input type="radio" name="expense-category"> opieka zdrowotna</label></div>
+							<div><label><input type="radio" name="expense-category"> ubranie</label></div>
+							<div><label><input type="radio" name="expense-category"> higiena</label></div>
+							<div><label><input type="radio" name="expense-category"> dzieci</label></div>
+							<div><label><input type="radio" name="expense-category"> rozrywka</label></div>
+							<div><label><input type="radio" name="expense-category"> wycieczka</label></div>
+							<div><label><input type="radio" name="expense-category"> szkolenia</label></div>
+							<div><label><input type="radio" name="expense-category"> książki</label></div>
+							<div><label><input type="radio" name="expense-category"> oszczędności</label></div>
+							<div><label><input type="radio" name="expense-category"> emerytura</label></div>
+							<div><label><input type="radio" name="expense-category"> spłata długów</label></div>
+							<div><label><input type="radio" name="expense-category"> darowizna</label></div>
+							<div><label><input type="radio" name="expense-category"> inne wydatki</label></div>
+							
+							<div><p><label for="comment">Komentarz:</label></p></div>
+							<textarea name="comment" id="comment" rows="3" cols="60" maxlength="160"></textarea>
+							
+							<input type="submit" value="Dodaj">
+							<input type="reset" value="Anuluj">
+						
+						</form>
+									
+					</div>
+					
+				</article>
+				
+			</div>
+		
+		</main>
+		
+		<footer>
+			
+			<h3>Copyright &copy; 2020 Dawid Kałużny (dawid.kaluzny.programista@gmail.com)</h3>
+			
+		</footer>
+
+	</body>
+	
+</html>

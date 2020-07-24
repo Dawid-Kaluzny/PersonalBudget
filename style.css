@@ -21,8 +21,8 @@
 
 .menu ol > li
 {
+	padding: 5px 10px;
 	float: left;
-	width: 200px;
 	height: 40px;
 }
 
