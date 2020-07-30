@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+	<head>
+	
+		<meta charset="utf-8">
+		<title>Budżet domowy</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="budżet, domowy, finanse, wydatki, oszczędzanie, zarobki, bogactwo">
+		<meta name="author" content="Dawid Kałużny">
+		
+		<meta http-equiv="X-Ua-Compatible" content="IE=edge">
+		<link rel="stylesheet" href="main.css" />
+		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="balances.css" />
+		<link rel="stylesheet" href="css/fontello.css" />
+		
+		<link href="https://fonts.googleapis.com/css2?family=MuseoModerno:wght@400;600&display=swap" rel="stylesheet">
+
+		<script src="https://www.gstatic.com/charts/loader.js"></script>
+		<script src="date.js"></script>
+    
+	</head>
+
+	<body>
+
+		<header class="sticky">
+		
+			<nav>
+				
+				<div class="menu">
+				
+					<ol>
+						<li><h2><a href="#"><i class="icon-money"></i> Budżet domowy</a></h2></li>
+						<li><a href="#"><i class="icon-money-1"></i> Dodaj przychód</a></li>
+						<li><a href="#"><i class="icon-shopping-basket"></i> Dodaj wydatek</a></li>
+						<li><a href="#"><i class="icon-balance-scale"></i> Przeglądaj bilans</a></li>
+						<li><a href="#"><i class="icon-cog"></i> Ustawienia</a></li>
+						<li><a href="#"><i class="icon-logout"></i> Wyloguj się</a></li>
+					</ol>
+					
+				</div>
+				
+			</nav>
+			
+		</header>
+		
+		<main>
+		
+			<div class="container">
+			
+				<article>
+				
+					<div class="balance">
+									
+						<h1><i class="icon-balance-scale"></i> Przeglądaj bilans</h1>		
+						
+						<div id="date-range">
+						</div>
+					
+						<div class="dropdown">
+							<button class="dropbutton">Wybierz okres</button>
+							<div class="dropdown-content">
+								<a href="#" id="current-month">Bieżący miesiąc</a>
+								<a href="#" id="previous-month">Poprzedni miesiąc</a>
+								<a href="#" id="current-year">Bieżący rok</a>
+								<a href="#" id="custom-date">Niestandardowy</a>
+							</div>
+						</div>
+						
+						<div style="clear: both;">
+						</div>
+								
+						<div class="table-balances">
+							
+							<table>
+								<caption>Przychody</caption>
+								<tr>
+									<th>Kategoria</th>
+									<th>Kwota</th>
+								</tr>
+								<tr>
+									<td>Wynagrodzenie</td>
+									<td>3000.00</td>
+								</tr>
+								<tr>
+									<td>Renta</td>
+									<td>1800.00</td>
+								</tr>
+								<tr>
+									<td>Sprzedaż</td>
+									<td>231.99</td>
+								</tr>
+								<tr>
+									<th>Razem</th>
+									<th>5031.99</th>
+								</tr>
+							</table>
+							
+						</div>	
+					
+						<div class="table-balances">
+							
+							<table>
+								<caption>Wydatki</caption>
+								<tr>
+									<th>Kategoria</th>
+									<th>Kwota</th>
+								</tr>
+								<tr>
+									<td>Mieszkanie</td>
+									<td>1500.00</td>
+								</tr>
+								<tr>
+									<td>Jedzenie</td>
+									<td>432.56</td>
+								</tr>
+								<tr>
+									<td>Transport</td>
+									<td>200.00</td>
+								</tr>
+								<tr>
+									<td>Telekomunikacja</td>
+									<td>50.00</td>
+								</tr>
+								<tr>
+									<td>Rozrywka</td>
+									<td>122.67</td>
+								</tr>
+								<tr>
+									<th>Razem</th>
+									<th>2305.23</th>
+								</tr>
+							</table>
+						
+						</div>
+					
+						<div class="balance-result">
+							<p>Bilans: <span class="color-result">2726,76</span></p>
+							Gratulacje. Świetnie zarządzasz finansami!
+						</div>
+						
+						<div id="piechart"></div>
+					
+					</div>
+					
+				</article>
+				
+			</div>
+		
+		</main>
+		
+		<footer>
+			
+			<h3>Copyright &copy; 2020 Dawid Kałużny (dawid.kaluzny.programista@gmail.com)</h3>
+			
+		</footer>
+
+	</body>
+	
+</html>
