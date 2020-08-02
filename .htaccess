@@ -1,0 +1,12 @@
+### PROTECT FILES ###
+<FilesMatch "\.(htaccess|htpasswd|ini|fla|psd|log|sh)$">
+Order Allow,Deny
+Deny from all
+</FilesMatch>
+
+RewriteEngine on
+RewriteRule budzet-domowy index.html
+RewriteRule zaloz-konto registration.html
+RewriteRule budzet-menu-glowne menu.html
+RewriteRule budzet-wprowadz-wydatek expenses.html
+RewriteRule budzet-przegladaj-bilans balance.html
