@@ -1,12 +1,11 @@
 .finance
 {
 	text-align: left;
-	padding: 20px 140px;
 }
 
 .finance h1
 {
-	margin-bottom: 20px;
+	margin-bottom: 40px;
 	margin-top: 40px;
 	text-align: center;
 }
@@ -22,7 +21,7 @@
 .finance input[type=number],
 .finance input[type=date]
 {
-	width: 220px;
+	width: 180px;
 	background-color: #EFEFEF;
 	color: #000;
 	border: 2px solid #BBB;
@@ -46,6 +45,7 @@
 .finance textarea
 {
 	border-radius: 10px;
+	display: block;
 	resize: none;
 	padding: 10px;
 }
@@ -66,19 +66,20 @@
 .input-right
 {
 	display: block;
-	margin-right: 264px;
 	text-align: right;
+	width: 258px;
 }
 
 .finance input[type=submit]
 {
-	width: 200px;
+	width: 180px;
 	background-color: #2E8B57;
-	font-size: 20px;
+	font-size: 18px;
 	color: white;
-	padding: 15px 10px;
+	padding: 12px 10px;
+	margin-bottom: 45px;
 	margin-top: 45px;
-	margin-right: 50px;
+	margin-right: 20px;
 	border: none;
 	border-radius: 20px;
 	cursor: pointer;
@@ -99,11 +100,11 @@
 
 .finance input[type=reset]
 {
-	width: 200px;
+	width: 180px;
 	background-color: #FF3333;
-	font-size: 20px;
+	font-size: 18px;
 	color: white;
-	padding: 15px 10px;
+	padding: 12px 10px;
 	margin-top: 45px;
 	border: none;
 	border-radius: 20px;
