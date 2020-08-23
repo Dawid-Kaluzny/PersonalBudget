@@ -66,7 +66,7 @@ function viewDateCurrentYear()
 
 function viewCustomDate()
 {
-	document.getElementById("date-range").innerHTML = '<div class="input-right"> <label>Data początkowa <input type="date" id="start-date"></label> <label>Data końcowa <input type="date" id="end-date"></label> <input type="submit" id="confirm" value="Pokaż"> </div>';
+	document.getElementById("date-range").innerHTML = '<div class="input-right"> <label>Data początkowa <input type="date" id="start-date"></label> <label class="ml-3">Data końcowa <input type="date" id="end-date"></label> <input type="submit" class="d-block ml-auto" id="confirm" value="Pokaż"> </div>';
 	
 	var today = new Date();
 	var year = today.getFullYear();
@@ -117,6 +117,7 @@ function calculateLastDayInMonth(year, month)
 function setDescription(description, earliestDate, latestDate)
 {
 	document.getElementById("date-range").innerHTML = '<p><span class="range">' + description + '</span><p> <p><b>od ' + earliestDate + ' do ' + latestDate + '</b></p>';
+	document.getElementById("date-range-main").innerHTML = '<p><span class="range">' + description + '</span><p> <p><b>od ' + earliestDate + ' do ' + latestDate + '</b></p>';
 }
 
 window.addEventListener("load", function() { viewDateCurrentMonth(); });
@@ -150,9 +151,13 @@ function drawChart() {
 	]);
 
 	// Optional; add a title and set the width and height of the chart
-	var options = {'title':'Twoje Wydatki', 'width':760, 'height':470};
+	var options = {'title':'Twoje Wydatki'};
 
 	// Display the chart inside the <div> element with id="piechart"
 	var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 	chart.draw(data, options);
 }
+
+$(window).resize(function(){
+  drawChart();
+});
