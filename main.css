@@ -5,3 +5,458 @@ body
 	font-family: 'MuseoModerno', cursive;
 	margin: 0;
 }
+
+footer
+{
+	background-color: #4682B4;
+	border-top: 2px solid #5F9EA0;
+	color: #FFF;
+	text-align: center;
+}
+
+.balance input[type=date]
+{
+	background-color: #EFEFEF;
+	border: 2px solid #BBB;
+	border-radius: 10px;
+	box-sizing: border-box;
+	color: #000;	
+	font-size: 16px;
+	margin-left: 10px;
+	margin-right: 0;
+	margin-top: 16px;
+	outline: none;
+	padding: 4px;
+	width: 200px;
+}
+
+.balance input[type=submit]
+{
+	background-color: #2E8B57;
+	border: none;
+	border-radius: 15px;
+	color: white;
+	font-size: 16px;
+	letter-spacing: 2px;
+	margin-top: 15px;
+	outline: none;
+	padding: 10px 10px;
+	width: 200px;
+}
+
+.balance input[type=submit]:focus
+{
+	box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
+}
+
+.balance input[type=submit]:hover
+{
+	background-color: #3CB371;
+}
+
+.balance table
+{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+}
+
+.balance td, th 
+{
+	border: 1px solid #DDD;
+	border-radius: 5px;
+	text-align: left;
+	padding: 10px 14px;
+}
+
+.balance th 
+{
+	background-color: #EFEFEF;
+}
+
+.balance-result
+{
+	padding: 20px;
+	text-align: center;
+}
+
+.balance-result p
+{
+	font-size: 30px;
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+
+.border-main
+{
+	background-color: #FFFAFA;
+	border: 3px solid #4682B4;
+	border-radius: 25px;
+}
+
+.btn-modal
+{
+	background-color: #2E8B57;
+	border-radius: 10px;
+	color: white;
+	font-size: 16px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	min-width: 160px;
+	padding: 10px;
+}
+
+.btn-modal:hover
+{
+	background-color: #3CB371;
+	color: #FFF;
+}
+
+.color-result
+{
+	color: #2E8B57;
+}
+
+.container-main
+{
+	background-color: #FFFAFA;
+	border-left: 2px solid #5F9EA0;
+	border-right: 2px solid #5F9EA0;
+	min-height: 90vh;
+}
+
+.container-register input[type=email],
+.container-register input[type=text],
+.container-register input[type=password]
+{
+	background-color: #EFEFEF;
+	border: 2px solid #BBB;
+	border-radius: 10px;
+	box-sizing: border-box;
+	color: #000;
+	font-size: 18px;
+	margin-left: 10px;
+	margin-top: 15px;
+	outline: none;
+	padding: 8px;
+	width: 260px;	
+}
+
+.container-register input[type=email]:focus,
+.container-register input[type=text]:focus,
+.container-register input[type=password]:focus
+{
+	background-color: #FAFAD2;
+	border: 2px solid #B0C4DE;
+	box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+	color: #2E8B57;
+}
+
+.container-register input[type=submit]
+{
+	background-color: #2E8B57;
+	border: none;
+	border-radius: 15px;
+	color: white;
+	font-size: 22px;
+	letter-spacing: 2px;
+	margin-top: 45px;
+	outline: none;
+	padding: 15px 10px;
+	width: 250px;	
+}
+
+.container-register input[type=submit]:focus
+{
+	box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
+}
+
+.container-register input[type=submit]:hover
+{
+	background-color: #3CB371;
+}
+
+.container-register label
+{
+	display:block;
+	font-size: 18px;	
+	text-align: right;
+}
+
+.finance
+{
+	text-align: left;
+}
+
+.finance input[type=date],
+.finance input[type=number]
+{
+	background-color: #EFEFEF;
+	border: 2px solid #BBB;
+	border-radius: 10px;
+	box-sizing: border-box;
+	color: #000;
+	font-size: 18px;
+	margin-left: 10px;
+	margin-top: 20px;
+	outline: none;
+	padding: 8px;
+	width: 180px;
+}
+
+.finance input[type=date]:focus,
+.finance input[type=number]:focus
+{
+	background-color: #FAFAD2;
+	border: 2px solid #B0C4DE;
+	box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+}
+
+.finance input[type=reset],
+.finance input[type=submit]
+{
+	border: none;
+	border-radius: 20px;
+	color: #FFF;
+	font-size: 18px;
+	letter-spacing: 2px;
+	margin-bottom: 45px;
+	margin-top: 45px;
+	outline: none;
+	padding: 12px 10px;
+	width: 180px;
+}
+
+.finance input[type=reset]
+{
+	background-color: #FF3333;
+}
+
+
+.finance input[type=reset]:hover
+{
+	background-color: #FF6347;
+}
+
+.finance input[type=submit]
+{
+	background-color: #2E8B57;
+	margin-right: 20px;
+}
+
+.finance input[type=reset]:focus,
+.finance input[type=submit]:focus
+{
+	box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
+}
+
+.finance input[type=submit]:hover
+{
+	background-color: #3CB371;
+}
+
+.finance label
+{
+	font-size: 18px;
+}
+
+.finance p
+{
+	font-size: 18px;
+	font-weight: 600;
+	margin-bottom: 4px;
+	text-align: left;
+}
+
+.finance textarea
+{
+	border-radius: 10px;
+	display: block;
+	padding: 10px;
+	resize: none;
+}
+
+.finance textarea:focus
+{
+	background-color: #FAFAD2;
+	border: 2px solid #B0C4DE;
+	box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+	outline: none;
+}
+
+.header-title
+{
+	margin-bottom: 40px;
+	margin-top: 20px;
+	text-align: center;
+}
+
+.input-right
+{
+	display: block;
+	text-align: right;
+	width: 258px;
+}
+
+.login-main input[type=email],
+.login-main input[type=password]
+{
+	background-color: #EFEFEF;
+	border: 2px solid #BBB;
+	border-radius: 10px;
+	box-sizing: border-box;
+	color: #000;	
+	font-size: 18px;
+	margin-top: 12px;	
+	outline: none;
+	padding: 8px;
+	width: 260px;
+}
+
+.login-main input[type=email]:focus,
+.login-main input[type=password]:focus
+{
+	background-color: #FAFAD2;
+	border: 2px solid #B0C4DE;
+	box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+	color: #2E8B57;
+}
+
+.login-main input[type=submit]
+{
+	background-color: #2E8B57;
+	border: none;
+	border-radius: 15px;
+	color: white;
+	cursor: pointer;
+	font-size:20px;
+	letter-spacing: 2px;
+	margin-bottom: 6px;
+	margin-top: 20px;
+	outline: none;
+	padding: 10px;	
+	width: 260px;
+}
+
+.login-main input[type=submit]:focus
+{
+	box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
+}
+
+.login-main input[type=submit]:hover
+{
+	background-color: #3CB371;
+}
+
+.logo-main-left
+{
+	min-height: 480px;
+	padding: 20px;
+}
+
+.logo-main-left i
+{
+	font-size: 140px;
+}
+
+.navbar
+{
+	background-color: #4682B4;
+}
+
+.navbar a
+{
+	color: #FFF;
+}
+
+
+.navbar a:hover
+{
+	color: #CFB53B;
+	cursor: pointer;
+}
+
+.options
+{
+	font-size: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+	text-align: center;
+	width: 260px;
+}
+
+.options a
+{
+	background-color: #F0F8FF;
+	border: 2px solid #4682B4;
+	border-radius: 30px;
+	color: #000;
+	display: block;
+	padding: 12px;
+	text-decoration: none;
+	transition: background-color 0.5s ease-in-out;
+}
+
+.options a:hover
+{
+	background-color: #4682B4;
+	border: 2px solid #CFB53B;
+	color: #CFB53B;
+}
+
+#piechart
+{
+	margin-top: 10px;
+	min-height: 460px;
+    width: 100%;
+}
+
+.range
+{
+	color: #AAA;
+}
+
+.register-main a
+{
+	background-color: #4682B4;
+	border-radius: 15px;
+	color: white;
+	display: block;
+	letter-spacing: 2px;
+	padding: 10px;
+	text-decoration: none;
+	width: 260px;
+}
+
+.register-main a:focus
+{
+	box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
+}
+
+.register-main a:hover
+{
+	background-color: #6495ED;
+}
+
+.sticky
+{
+	position: sticky;
+    top: 0px;
+	z-index: 100;
+}
+
+.text-steel
+{
+	color: #4682B4;
+}
+
+@media (max-width: 575px)
+{
+	.container-register input[type=email],
+	.container-register input[type=text],
+	.container-register input[type=password]
+	{
+		width: 220px;
+	}
+}

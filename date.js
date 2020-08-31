@@ -66,7 +66,7 @@ function viewDateCurrentYear()
 
 function viewCustomDate()
 {
-	document.getElementById("date-range").innerHTML = '<div class="input-right"> <label>Data początkowa <input type="date" id="start-date"></label> <label class="ml-3">Data końcowa <input type="date" id="end-date"></label> <input type="submit" class="d-block ml-auto" id="confirm" value="Pokaż"> </div>';
+	document.getElementById("date-range").innerHTML = '<div class="text-right"> <label>Data początkowa <input type="date" id="start-date"></label> <label class="ml-3">Data końcowa <input type="date" id="end-date"></label> <input type="submit" class="d-block ml-auto" id="confirm" value="Pokaż"> </div>';
 	
 	var today = new Date();
 	var year = today.getFullYear();
