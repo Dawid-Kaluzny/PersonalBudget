@@ -6,7 +6,7 @@ Deny from all
 
 RewriteEngine on
 RewriteRule budzet-domowy index.html
-RewriteRule zaloz-konto registration.html
-RewriteRule budzet-menu-glowne menu.html
+RewriteRule zaloz-konto registration.php
+RewriteRule budzet-menu-glowne menu.php
 RewriteRule budzet-wprowadz-wydatek expenses.html
 RewriteRule budzet-przegladaj-bilans balance.html
