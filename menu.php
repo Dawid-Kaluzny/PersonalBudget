@@ -1,3 +1,11 @@
+<?php
+	session_start();
+	
+	if (!isset($_SESSION['logged_user'])) {
+		header('Location: budzet-domowy');
+		exit();
+	}
+?>
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -62,13 +70,20 @@
 		
 			<div class="container container-main">
 			
+				<?php
+					if (isset($_SESSION['account_created'])) {
+						echo '<h3 class="text-success text-center pt-4">Konto założone pomyślnie! Życzymy miłego użytkowania!</h3>';
+						unset($_SESSION['account_created']);
+					}
+				?>
+			
 				<div class="row p-4">
 			
 					<nav class="col-md-6 px-4 py-2">
 				
 						<div class="menu-main text-center">
 					
-							<h1 class="header-title">Menu główne</h1>
+							<h1 class="header-title">Witaj, <?= $_SESSION['first_name'] ?>!</h1>
 							
 							<div class="options">
 								<a href="#"><i class="icon-money-1"></i> Dodaj przychód</a>

@@ -183,6 +183,11 @@ footer
 	text-align: right;
 }
 
+.error
+{
+	color: #FF0000;
+}
+
 .finance
 {
 	text-align: left;
