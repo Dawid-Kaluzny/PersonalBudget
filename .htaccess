@@ -5,7 +5,7 @@ Deny from all
 </FilesMatch>
 
 RewriteEngine on
-RewriteRule budzet-domowy index.html
+RewriteRule budzet-domowy index.php
 RewriteRule zaloz-konto registration.php
 RewriteRule budzet-menu-glowne menu.php
 RewriteRule budzet-wprowadz-wydatek expenses.html
