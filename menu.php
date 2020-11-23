@@ -56,7 +56,7 @@
 							<a class="nav-link" href="#"><i class="icon-cog"></i> Ustawienia</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="budzet-domowy"><i class="icon-logout"></i> Wyloguj się</a>
+							<a class="nav-link" href="logout.php"><i class="icon-logout"></i> Wyloguj się</a>
 						</li>
 					</ol>
 					
@@ -102,7 +102,7 @@
 							</div>
 							
 							<div class="options">
-								<a href="budzet-domowy"><i class="icon-logout"></i> Wyloguj się</a>
+								<a href="logout.php"><i class="icon-logout"></i> Wyloguj się</a>
 							</div>
 						
 						</div>

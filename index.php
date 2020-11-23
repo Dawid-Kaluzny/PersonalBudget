@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (isset($_SESSION['logged_user'])) {
+	header('Location: budzet-menu-glowne');
+	exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -46,13 +54,21 @@
 						
 							<h1 class="h2 mb-3"><i class="icon-money"></i>Logowanie</h1>
 							
-							<form>
+							<form method="post" action="login.php">
 					
-								<label><input type="email" placeholder="adres e-mail" required></label>
+								<label><input type="email" name="login" placeholder="adres e-mail" <?= isset($_SESSION['given_login']) ? 'value="'.$_SESSION['given_login'].'"' : '' ?> required></label>
 								
-								<label><input type="password" placeholder="hasło" required></label>
+								<label><input type="password" name="password" placeholder="hasło" required></label>
 								
 								<input type="submit" value="Zaloguj się">
+								
+								<?php
+									if (isset($_SESSION['bad_attempt'])) {
+										echo '<p class="error">Niepoprawny login lub hasło!</p>';
+										unset($_SESSION['bad_attempt']);
+										unset($_SESSION['given_login']);
+									}
+								?>
 					
 							</form>
 				
