@@ -1,3 +1,44 @@
+<?php
+	session_start();
+	
+	if (!isset($_SESSION['logged_user'])) {
+		header('Location: budzet-domowy');
+		exit();
+	} else {
+		require_once 'database.php';
+		
+		if (isset($_POST['amount'])) {
+			$amount = $_POST['amount'];
+			$date_of_income = $_POST['date_of_income'];
+			$income_category = $_POST['income_category'];
+			$comment = $_POST['comment'];
+			
+			$categoriesIdQuery = $db->prepare('SELECT id FROM incomes_category_assigned_to_users WHERE user_id = :user_id AND name = :income_category');
+			$categoriesIdQuery->bindValue(':user_id', $_SESSION['id_logged_user'], PDO::PARAM_INT);;
+			$categoriesIdQuery->bindValue(':income_category', $income_category, PDO::PARAM_STR);;
+			$categoriesIdQuery->execute();
+		
+			$categoriesId = $categoriesIdQuery->fetch();
+			$categoryId = $categoriesId['id'];
+			
+			$addIncomesQuery = $db->prepare('INSERT INTO incomes VALUES (NULL, :user_id, :income_category_id, :amount, :date_of_income, :comment)');
+			$addIncomesQuery->bindValue(':user_id', $_SESSION['id_logged_user'], PDO::PARAM_INT);
+			$addIncomesQuery->bindValue(':income_category_id', $categoryId, PDO::PARAM_INT);
+			$addIncomesQuery->bindValue(':amount', $amount, PDO::PARAM_STR);
+			$addIncomesQuery->bindValue(':date_of_income', $date_of_income, PDO::PARAM_STR);
+			$addIncomesQuery->bindValue(':comment', $comment, PDO::PARAM_STR);
+			$addIncomesQuery->execute();
+			
+			$_SESSION['income_added'] = true;	
+		} 
+		
+		$incomesQuery = $db->prepare('SELECT name FROM incomes_category_assigned_to_users WHERE user_id = :user_id');
+		$incomesQuery->bindValue(':user_id', $_SESSION['id_logged_user'], PDO::PARAM_INT);
+		$incomesQuery->execute();
+		
+		$incomes = $incomesQuery->fetchAll();
+	}
+?>
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -38,7 +79,7 @@
 				
 					<ol class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link" href="#"><i class="icon-money-1"></i> Dodaj przychód</a>
+							<a class="nav-link" href="budzet-wprowadz-przychod"><i class="icon-money-1"></i> Dodaj przychód</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="budzet-wprowadz-wydatek"><i class="icon-shopping-basket"></i> Dodaj wydatek</a>
@@ -72,20 +113,27 @@
 					
 							<h1 class="header-title"><i class="icon-money-1"></i> Dodaj przychód</h1>
 							
-							<form>
+							<?php
+								if (isset($_SESSION['income_added'])) {
+									echo '<p class="error">Przychód został dodany!</p>';
+									unset($_SESSION['income_added']);
+								}
+							?>
 							
-								<label class="input-right mr-auto">Kwota <input type="number" step="0.01" required></label>
+							<form method="post">
+							
+								<label class="input-right mr-auto">Kwota <input type="number" name="amount" step="0.01" required></label>
 								
-								<label class="input-right mb-5 mr-auto">Data <input type="date" id="time"></label>
+								<label class="input-right mb-5 mr-auto">Data <input type="date" name="date_of_income" id="time" required></label>
 								
 								<p>Kategoria:</p>
-								<div><label><input type="radio" name="income-category" checked> wynagrodzenie</label></div>
-								<div><label><input type="radio" name="income-category"> odsetki bankowe</label></div>
-								<div><label><input type="radio" name="income-category"> sprzedaż na allegro</label></div>
-								<div><label><input type="radio" name="income-category"> inne</label></div>
-								
+								<?php
+									foreach ($incomes as $income) {
+										echo '<div><label><input type="radio" name="income_category" value="'.$income['name'].'" required> '.$income['name'].'</label></div>';
+									}
+								?>	
 								<div><p><label for="comment">Komentarz:</label></p></div>
-								<textarea name="comment" id="comment" rows="6" cols="30" maxlength="160"></textarea>
+								<textarea name="comment" id="comment" rows="6" cols="30" maxlength="150"></textarea>
 								
 								<input type="submit" value="Dodaj">
 								<input type="reset" value="Anuluj">
