@@ -44,7 +44,7 @@
 				
 					<ol class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link" href="#"><i class="icon-money-1"></i> Dodaj przychód</a>
+							<a class="nav-link" href="budzet-wprowadz-przychod"><i class="icon-money-1"></i> Dodaj przychód</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="budzet-wprowadz-wydatek"><i class="icon-shopping-basket"></i> Dodaj wydatek</a>
@@ -86,7 +86,7 @@
 							<h1 class="header-title">Witaj, <?= $_SESSION['first_name'] ?>!</h1>
 							
 							<div class="options">
-								<a href="#"><i class="icon-money-1"></i> Dodaj przychód</a>
+								<a href="budzet-wprowadz-przychod"><i class="icon-money-1"></i> Dodaj przychód</a>
 							</div>
 							
 							<div class="options">
