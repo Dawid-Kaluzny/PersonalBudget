@@ -9,5 +9,5 @@ RewriteRule budzet-domowy index.php
 RewriteRule zaloz-konto registration.php
 RewriteRule budzet-menu-glowne menu.php
 RewriteRule budzet-wprowadz-przychod incomes.php
-RewriteRule budzet-wprowadz-wydatek expenses.html
+RewriteRule budzet-wprowadz-wydatek expenses.php
 RewriteRule budzet-przegladaj-bilans balance.html
