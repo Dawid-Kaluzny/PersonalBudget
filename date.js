@@ -30,6 +30,7 @@ function viewDateCurrentMonth()
 	var description = 'Bieżący miesiąc';
 	
 	setDescription(description, earliestDateCurrentMonth, lastestDateCurrentMonth);
+	viewBalance(earliestDateCurrentMonth, lastestDateCurrentMonth);
 }
 
 function viewDatePreviousMonth()
@@ -49,6 +50,7 @@ function viewDatePreviousMonth()
 	var description = 'Poprzedni miesiąc';
 	
 	setDescription(description, earliestDatePrevioustMonth, lastestDatePreviousMonth);
+	viewBalance(earliestDatePrevioustMonth, lastestDatePreviousMonth);
 }
 
 function viewDateCurrentYear()
@@ -62,6 +64,7 @@ function viewDateCurrentYear()
 	var description = 'Bieżący rok';
 	
 	setDescription(description, earliestDateCurrentYear, lastestDateCurrentYear);
+	viewBalance(earliestDateCurrentYear, lastestDateCurrentYear);
 }
 
 function viewCustomDate()
@@ -81,6 +84,7 @@ function viewCustomDate()
 	rangeDate.addEventListener("click", function() { earliestDate = document.getElementById("start-date").value; });
 	rangeDate.addEventListener("click", function() { lastestDate = document.getElementById("end-date").value; });
 	rangeDate.addEventListener("click", function() { setDescription(description, earliestDate, lastestDate); });
+	rangeDate.addEventListener("click", function() { viewBalance(earliestDate, lastestDate); });
 }
 
 function calculateLastDayInMonth(year, month) 
@@ -114,10 +118,19 @@ function calculateLastDayInMonth(year, month)
     return lastDayInMonth;
 }
 
-function setDescription(description, earliestDate, latestDate)
+function setDescription(description, earliestDate, lastestDate)
 {
-	document.getElementById("date-range").innerHTML = '<p><span class="range">' + description + '</span><p> <p><b>od ' + earliestDate + ' do ' + latestDate + '</b></p>';
-	document.getElementById("date-range-main").innerHTML = '<p><span class="range">' + description + '</span><p> <p><b>od ' + earliestDate + ' do ' + latestDate + '</b></p>';
+	document.getElementById("date-range").innerHTML = '<p><span class="range">' + description + '</span><p> <p><b>od ' + earliestDate + ' do ' + lastestDate + '</b></p>';
+	document.getElementById("date-range-main").innerHTML = '<p><span class="range">' + description + '</span><p> <p><b>od ' + earliestDate + ' do ' + lastestDate + '</b></p>';		
+}
+
+function viewBalance(earliestDate, lastestDate)
+{
+	$.post("view_balance_tables.php", {earliestDate: earliestDate, lastestDate: lastestDate})
+	  .done(function(data) {
+		document.getElementById("balance").innerHTML = data;
+		drawChart();
+	  });
 }
 
 window.addEventListener("load", function() { viewDateCurrentMonth(); });
@@ -141,17 +154,22 @@ google.charts.setOnLoadCallback(drawChart);
 
 // Draw the chart and set the chart values
 function drawChart() {
-	var data = google.visualization.arrayToDataTable([
-		['Kategoria', 'Kwota'],
-		['Mieszkanie', 1500.00],
-		['Jedzenie', 432.56],
-		['Transport', 200.00],
-		['Telekomunikacja', 50.00],
-		['Rozrywka', 122.67],
-	]);
+	var jsonData = null;
+
+	var jsonDataResult = $.ajax({
+		   url: "view_expense_graph.php",
+		   dataType: "json",
+		   async: false,
+		   success: (
+			   function(data) {
+				   jsonData = data;
+			   })
+		});
 
 	// Optional; add a title and set the width and height of the chart
 	var options = {'title':'Twoje Wydatki'};
+	
+	var data = new google.visualization.arrayToDataTable(jsonData);
 
 	// Display the chart inside the <div> element with id="piechart"
 	var chart = new google.visualization.PieChart(document.getElementById('piechart'));

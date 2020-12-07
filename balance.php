@@ -1,3 +1,11 @@
+<?php
+	session_start();
+	
+	if (!isset($_SESSION['logged_user'])) {
+		header('Location: budzet-domowy');
+		exit();
+	}
+?>
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -112,91 +120,10 @@
 					</div>
 					
 				</div>
-					
-				<div class="row py-5">
-								
-					<div class="col-md-6 text-center table-balances">
-						
-						<h2>Przychody</h2>
-						<table>
-							<caption>Przychody</caption>
-							<tr>
-								<th>Kategoria</th>
-								<th>Kwota</th>
-							</tr>
-							<tr>
-								<td>Wynagrodzenie</td>
-								<td>3000.00</td>
-							</tr>
-							<tr>
-								<td>Renta</td>
-								<td>1800.00</td>
-							</tr>
-							<tr>
-								<td>Sprzedaż</td>
-								<td>231.99</td>
-							</tr>
-							<tr>
-								<th>Razem</th>
-								<th>5031.99</th>
-							</tr>
-						</table>
-						
-					</div>	
-					
-					<div class="col-md-6 text-center table-balances">
-						
-						<h2>Wydatki</h2>
-						<table>
-							<caption>Wydatki</caption>
-							<tr>
-								<th>Kategoria</th>
-								<th>Kwota</th>
-							</tr>
-							<tr>
-								<td>Mieszkanie</td>
-								<td>1500.00</td>
-							</tr>
-							<tr>
-								<td>Jedzenie</td>
-								<td>432.56</td>
-							</tr>
-							<tr>
-								<td>Transport</td>
-								<td>200.00</td>
-							</tr>
-							<tr>
-								<td>Telekomunikacja</td>
-								<td>50.00</td>
-							</tr>
-							<tr>
-								<td>Rozrywka</td>
-								<td>122.67</td>
-							</tr>
-							<tr>
-								<th>Razem</th>
-								<th>2305.23</th>
-							</tr>
-						</table>
-					
-					</div>
-						
-				</div>
 				
-				<div class="row pl-5">
+				<div id="balance"></div>
 				
-					<div class="col-md-12">
-					
-						<div class="balance-result">
-							<p>Bilans: <span class="color-result">2726,76</span></p>
-							Gratulacje. Świetnie zarządzasz finansami!
-						</div>
-						
-						<div id="piechart"></div>
-						
-					</div>
-				
-				</div>
+				<div id="piechart"></div>
 			
 			</article>
 		
@@ -208,7 +135,7 @@
 			
 		</footer>
 		
-		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 		<script src="date.js"></script>
