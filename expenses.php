@@ -131,7 +131,7 @@
 							
 							<?php
 								if (isset($_SESSION['expense_added'])) {
-									echo '<p class="error">Wydatek został dodany!</p>';
+									echo '<p class="text-success">Wydatek został dodany!</p>';
 									unset($_SESSION['expense_added']);
 								}
 							?>

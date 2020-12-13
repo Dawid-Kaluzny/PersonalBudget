@@ -115,7 +115,7 @@
 							
 							<?php
 								if (isset($_SESSION['income_added'])) {
-									echo '<p class="error">Przychód został dodany!</p>';
+									echo '<p class="text-success">Przychód został dodany!</p>';
 									unset($_SESSION['income_added']);
 								}
 							?>
