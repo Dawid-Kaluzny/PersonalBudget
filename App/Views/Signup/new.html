@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Budżet domowy - zarejestruj się{% endblock %}
+
+{% block body %}
+
+    <h1>Rejestracja</h1>
+
+	<form method="post" action="/signup/create">
+	
+		<div>
+			<label for="inputName">Imię</label>
+			<input id="inputName" name="name" placeholder="Imię" autofocus />
+		</div>
+		<div>
+			<label for="inputEmail">Adres e-mail</label>
+			<input id="inputEmail" name="email" placeholder="Adres e-mail" />
+		</div>
+		<div>
+			<label for="inputPassword">Hasło</label>
+			<input type="password" id="inputPassword" name="password" placeholder="Hasło" />
+		</div>
+		<div>
+			<label for="inputPasswordConfirmation">Powtórz hasło</label>
+			<input type="password" id="inputPasswordConfirmation" name="password_confirmation" placeholder="Powtórz hasło" />
+		</div>
+		
+		<button type="submit">Zarejestruj się</button>
+	
+	</form>
+	
+{% endblock %}
