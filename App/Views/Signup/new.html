@@ -6,15 +6,24 @@
 
     <h1>Rejestracja</h1>
 
+	{% if user.errors is not empty %}
+		<p>Błędy rejestracji:</p>
+		<ul>
+		{% for error in user.errors %}
+			<li>{{ error }}</li>
+		{% endfor %}
+		</ul>
+	{% endif %}
+
 	<form method="post" action="/signup/create">
 	
 		<div>
 			<label for="inputName">Imię</label>
-			<input id="inputName" name="name" placeholder="Imię" autofocus />
+			<input id="inputName" name="name" placeholder="Imię" autofocus value="{{ user.name }}" />
 		</div>
 		<div>
 			<label for="inputEmail">Adres e-mail</label>
-			<input id="inputEmail" name="email" placeholder="Adres e-mail" />
+			<input id="inputEmail" name="email" placeholder="Adres e-mail" value="{{ user.email }}" />
 		</div>
 		<div>
 			<label for="inputPassword">Hasło</label>
