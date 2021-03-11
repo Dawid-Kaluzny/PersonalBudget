@@ -33,7 +33,7 @@ class Signup extends \Core\Controller
 		
 		if ($user->save()) {
 		
-			header('Location: http://' . $_SERVER['HTTP_HOST'] . 'signup/success', true, 303);
+			header('Location: http://' . $_SERVER['HTTP_HOST'] . '/signup/success', true, 303);
 			exit;
 			
 		} else {
