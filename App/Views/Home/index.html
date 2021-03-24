@@ -6,10 +6,12 @@
 
     <h1>Welcome</h1>
 
-	{% if session.user_id %}
-		Użytkownik z ID {{ session.user_id }} jest zalogowany. <a href="/logout">Wyloguj się</a>.
+	{% if current_user %}
+		Cześć {{ current_user.username }}.
+		
+		<a href="/logout">Wyloguj się</a>
 	{% else %}
-		<a href="/signup/new">Zarejestruj się</a> or <a href="/login">zaloguj się</a>.
+		<a href="/signup/new">Zarejestruj się</a> lub <a href="/login">zaloguj się</a>.
 	{% endif %}
 
 {% endblock %}
