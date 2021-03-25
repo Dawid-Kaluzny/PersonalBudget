@@ -3,6 +3,7 @@
 namespace Core;
 
 use \App\Auth;
+use \App\Flash;
 
 /**
  * Base controller
@@ -94,6 +95,8 @@ abstract class Controller
 	public function reguireLogin()
 	{
 		if (! Auth::getUser()) {
+			
+			Flash::addMessage('Zaloguj się, aby uzyskać dostęp do tej strony', Flash::INFO);
 			
 			Auth::rememberRequestedPage();
 			
