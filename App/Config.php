@@ -13,19 +13,19 @@ class Config
 	 * Database host
 	 * @var string
 	 */
-	const DB_HOST = 'localhost';
+	const DB_HOST = '';
 	
 	/**
 	 * Database name
 	 * @var string
 	 */
-	const DB_NAME = 'home_budget_mvc';
+	const DB_NAME = '';
 	
 	/**
 	 * Database user
 	 * @var string
 	 */
-	const DB_USER = 'root';
+	const DB_USER = '';
 	
 	/**
 	 * Database password
@@ -43,5 +43,23 @@ class Config
 	 * Secret key for hashing
 	 * @var string
 	 */
-	const SECRET_KEY = 'secret';
+	const SECRET_KEY = '';
+	
+	/**
+	 * the SMTP host server to send emails
+	 * @var string
+	 */
+	const SMTP_HOST = '';
+	
+	/**
+	 * SMTP username
+	 * @var string
+	 */
+	const SMTP_USER = '';
+	
+	/**
+	 * SMTP password
+	 * @var string
+	 */
+	const SMTP_PASSWORD = '';
 }
