@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}Budżet domowy - zarejestruj się{% endblock %}
+
+{% block footer %}
+	<script src="/js/app.js"></script>
+	
+	<script>
+		$(document).ready(function() {
+
+			/**
+			 * Validate the form
+			 */
+			$('#formSignup').validate({
+				rules: {
+					name: 'required',
+					email: {
+						required: true,
+						email: true,
+						remote: '/account/validate-email'
+					},
+					password: {
+						required: true,
+						minlength: 6,
+						validPassword: true
+					},
+					password_confirmation: {
+						equalTo: '#inputPassword'
+					}
+				},
+				messages: {
+					email: {
+						remote: 'E-mail jest już zajęty'
+					}
+				}
+			});
+		});
+	</script>
+	
+{% endblock %}
+
+{% block body %}
+
+    <h1>Rejestracja</h1>
+
+	{% if user.errors is not empty %}
+		<p>Błędy rejestracji:</p>
+		<ul>
+		{% for error in user.errors %}
+			<li>{{ error }}</li>
+		{% endfor %}
+		</ul>
+	{% endif %}
+
+	<form method="post" action="/signup/create" id="formSignup">
+	
+		<div>
+			<label for="inputName">Imię</label>
+			<input id="inputName" name="name" placeholder="Imię" autofocus value="{{ user.name }}" required />
+		</div>
+		<div>
+			<label for="inputEmail">Adres e-mail</label>
+			<input type="email" id="inputEmail" name="email" placeholder="Adres e-mail" value="{{ user.email }}" required />
+		</div>
+		<div>
+			<label for="inputPassword">Hasło</label>
+			<input type="password" id="inputPassword" name="password" placeholder="Hasło" required />
+		</div>
+		<div>
+			<label for="inputPasswordConfirmation">Powtórz hasło</label>
+			<input type="password" id="inputPasswordConfirmation" name="password_confirmation" placeholder="Powtórz hasło" required />
+		</div>
+		
+		<button type="submit">Zarejestruj się</button>
+	
+	</form>
+	
+{% endblock %}

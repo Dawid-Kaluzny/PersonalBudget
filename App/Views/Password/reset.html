@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Budżet domowy - reset hasła{% endblock %}
+
+{% block footer %}
+	<script src="/js/app.js"></script>
+
+	<script>	
+		$(document).ready(function() {
+
+			/**
+			 * Validate the form
+			 */
+			$('#formPassword').validate({
+				rules: {
+					password: {
+						required: true,
+						minlength: 6,
+						validPassword: true
+					},
+					password_confirmation: {
+						equalTo: '#inputPassword'
+					}
+				}
+			});
+		});
+	</script>
+	
+{% endblock %}
+
+{% block body %}
+
+    <h1>Resetowanie hasła</h1>
+
+	{% if user.errors is not empty %}
+		<p>Błędy rejestracji:</p>
+		<ul>
+		{% for error in user.errors %}
+			<li>{{ error }}</li>
+		{% endfor %}
+		</ul>
+	{% endif %}
+
+	<form method="post" action="/password/reset-password" id="formPassword">
+	
+		<input type="hidden" name="token" value="{{ token }}" />
+	
+		<div>
+			<label for="inputPassword">Hasło</label>
+			<input type="password" id="inputPassword" name="password" placeholder="Hasło" required />
+		</div>
+		<div>
+			<label for="inputPasswordConfirmation">Powtórz hasło</label>
+			<input type="password" id="inputPasswordConfirmation" name="password_confirmation" placeholder="Powtórz hasło" required />
+		</div>
+		
+		<button type="submit">Zresetuj hasło</button>
+	
+	</form>
+	
+{% endblock %}
