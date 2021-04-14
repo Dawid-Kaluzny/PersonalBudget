@@ -37,6 +37,8 @@
 		});
 	</script>
 	
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	
 {% endblock %}
 
 {% block body %}
@@ -70,6 +72,7 @@
 			<label for="inputPasswordConfirmation">Powtórz hasło</label>
 			<input type="password" id="inputPasswordConfirmation" name="password_confirmation" placeholder="Powtórz hasło" required />
 		</div>
+		<div class="g-recaptcha" data-sitekey="6LdMaNQZAAAAACKeP4qGxXtF5yxCNcYDpkyn0dzZ"></div>
 		
 		<button type="submit">Zarejestruj się</button>
 	

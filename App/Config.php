@@ -62,4 +62,10 @@ class Config
 	 * @var string
 	 */
 	const SMTP_PASSWORD = '';
+	
+	/**
+	 * secret recaptcha key
+	 * @var string
+	 */
+	const RECAPTCHA_KEY = '';
 }

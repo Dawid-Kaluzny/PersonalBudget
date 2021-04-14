@@ -92,7 +92,7 @@ abstract class Controller
 	 *
 	 * @return void
 	 */
-	public function reguireLogin()
+	public function requireLogin()
 	{
 		if (! Auth::getUser()) {
 			
