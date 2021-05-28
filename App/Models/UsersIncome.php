@@ -78,7 +78,7 @@ class UsersIncome extends \Core\Model
 	/**
      * Find id category by its name
      *
-     * @return integer Id category
+     * @return integer Id income category assigned to user
      */
     protected function findIdByCategoryName()
     {
