@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use \App\Config;
 use \App\Mail;
 use \App\Token;
 use \Core\View;
@@ -62,7 +63,15 @@ class User extends \Core\Model
 			$stmt->bindValue(':password', $password_hash, PDO::PARAM_STR);
 			$stmt->bindValue(':activation_hash', $hashed_token, PDO::PARAM_STR);
 			
-			return $stmt->execute();
+			$stmt->execute();
+			
+			$user_id = $db->lastInsertId();
+			
+			$this->assignUserIncomesCategories($user_id);
+			$this->assignUserExpensesCategories($user_id);
+			$this->assignUserPaymentMethods($user_id);
+			
+			return true;
 		}
 		
 		return false;
@@ -104,6 +113,18 @@ class User extends \Core\Model
 		
 		if (preg_match('/.*\d+.*/i', $this->password) == 0) {
 			$this->errors[] = 'Hasło musi mieć co najmniej jedną cyfrę';
+		}
+		
+		// re-captcha
+		$secret_key = Config::RECAPTCHA_KEY;
+		$response = $this->{'g-recaptcha-response'};
+	
+		$check_recaptcha = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret_key . '&response=' . $response);
+	
+		$answer_recaptcha = json_decode($check_recaptcha);
+	
+		if (! $answer_recaptcha->success){
+			$this->errors[] = 'Potwierdź, że nie jesteś robotem!';
 		}
 	}
 	
@@ -381,6 +402,60 @@ class User extends \Core\Model
 			
 		$stmt->bindValue(':hashed_token', $hashed_token, PDO::PARAM_STR);
 		
+		$stmt->execute();
+	}
+	
+	/**
+	 * Assign incomes categories to a user with a specificed id
+	 *
+	 * @param string $id The user ID
+	 *
+	 * @return void
+	 */
+	protected function assignUserIncomesCategories($user_id)
+	{
+		$sql = 'INSERT INTO incomes_category_assigned_to_users SELECT  NULL, :userId, name FROM incomes_category_default';
+		
+		$db = static::getDB();
+		$stmt = $db->prepare($sql);
+		
+		$stmt->bindValue(':userId', $user_id, PDO::PARAM_INT);
+		$stmt->execute();
+	}
+	
+	/**
+	 * Assign expenses categories to a user with a specificed id
+	 *
+	 * @param string $id The user ID
+	 *
+	 * @return void
+	 */
+	protected function assignUserExpensesCategories($user_id)
+	{
+		$sql = 'INSERT INTO expenses_category_assigned_to_users SELECT  NULL, :userId, name FROM expenses_category_default';
+		
+		$db = static::getDB();
+		$stmt = $db->prepare($sql);
+		
+		$stmt->bindValue(':userId', $user_id, PDO::PARAM_INT);
+		$stmt->execute();
+	}
+	
+	/**
+	 * Assign payment methods to a user with a specificed id
+	 *
+	 * @param string $id The user ID
+	 *
+	 * @return void
+	 */
+	protected function assignUserPaymentMethods($user_id)
+	{
+		$sql = 'INSERT INTO payment_methods_assigned_to_users SELECT  NULL, :userId, name FROM payment_methods_default';
+		
+		$db = static::getDB();
+		$stmt = $db->prepare($sql);
+		
+		$stmt->bindValue(':userId', $user_id, PDO::PARAM_INT);
 		$stmt->execute();
 	}
 }
