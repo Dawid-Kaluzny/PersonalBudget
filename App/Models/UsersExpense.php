@@ -137,4 +137,39 @@ class UsersExpense extends \Core\Model
 		
 		return $categoryId['id'];
 	}
+	
+	/**
+	 * View expenses table assigned to user
+	 *
+	 * @return void
+	 */
+	public function viewExpensesTable()
+	{
+		$earliestDate = $_POST['earliestDate'];
+		$lastestDate = $_POST['lastestDate'];
+			
+		$sql = 'SELECT ec.name, SUM(e.amount) AS ea FROM users AS u, expenses AS e, expenses_category_assigned_to_users
+				AS ec WHERE e.user_id = :user_id AND e.date_of_expense >= :earliestDate AND e.date_of_expense <= :lastestDate AND u.id = ec.user_id AND u.id = e.user_id AND ec.id = e.expense_category_assigned_to_user_id GROUP BY ec.name ORDER BY ea DESC';
+		
+		$db = static::getDB();
+		$stmt = $db->prepare($sql);
+		
+		$stmt->bindValue(':user_id', $this->user_id, PDO::PARAM_INT);
+		$stmt->bindValue(':earliestDate', $earliestDate, PDO::PARAM_STR);
+		$stmt->bindValue(':lastestDate', $lastestDate, PDO::PARAM_STR);
+		$stmt->execute();
+		
+		$expenses = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		
+		$data = Array();
+		
+		foreach($expenses as $row) {
+			$data[] = Array(
+				'name'   => $row["name"],
+				'ea'  => floatval($row["ea"])
+			);
+		}
+		
+		echo json_encode($data);
+	}
 }

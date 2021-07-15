@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Budżet domowy - wyświetl bilans{% endblock %}
+
+{% block body %}
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<script src="https://www.gstatic.com/charts/loader.js"></script>	
+
+    <h1>Przeglądaj bilans</h1>
+	
+	<!-- Button to Open the Modal -->
+	<button type="button" class="btn btn-modal float-md-right" data-toggle="modal" data-target="#myModal">
+		Wybierz okres
+	</button>
+	
+	<!-- The Modal -->
+	<div class="modal fade" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+							  
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Wybierz okres</h4>
+								  
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+								  
+				</div>
+								
+				<!-- Modal body -->
+				<div class="modal-body">
+					<div id="date-range"></div>	
+					<div><a href="#" id="current-month">Bieżący miesiąc</a></div>
+					<div><a href="#" id="previous-month">Poprzedni miesiąc</a></div>
+					<div><a href="#" id="current-year">Bieżący rok</a></div>
+					<div><a href="#" id="custom-date">Niestandardowy</a></div>
+				</div>
+								
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Zamknij</button>
+				</div>
+								
+			</div>
+		</div>
+	</div>	
+	
+	<div id="date-range-main"></div>
+	
+	<div>
+		<div class="row py-5">
+								
+			<div class="col-md-6 text-center table-balances">
+							
+				<h2>Przychody</h2>
+				
+				<table id="incomes">
+				</table>
+					
+			</div>	
+						
+			<div class="col-md-6 text-center table-balances">
+							
+				<h2>Wydatki</h2>
+				
+				<table id="expenses">
+				</table>
+						
+			</div>
+							
+		</div>
+		
+		<div class="row pl-5">
+					
+			<div class="col-md-12">
+						
+				<div id="balance-result"></div>
+
+			</div>
+					
+		</div>
+		
+	</div>
+				
+	<div id="piechart"></div>
+	
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	<script src="/js/date.js"></script>
+	
+{% endblock %}

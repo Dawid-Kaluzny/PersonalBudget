@@ -95,4 +95,39 @@ class UsersIncome extends \Core\Model
 		
 		return $categoryId['id'];
 	}
+	
+	/**
+	 * View incomes table assigned to user
+	 *
+	 * @return void
+	 */
+	public function viewIncomesTable()
+	{
+		$earliestDate = $_POST['earliestDate'];
+		$lastestDate = $_POST['lastestDate'];
+			
+		$sql = 'SELECT ic.name, SUM(i.amount) AS ia FROM users AS u, incomes AS i, incomes_category_assigned_to_users AS ic
+				WHERE i.user_id = :user_id AND i.date_of_income >= :earliestDate AND i.date_of_income <= :lastestDate AND u.id = ic.user_id AND u.id = i.user_id AND ic.id = i.income_category_assigned_to_user_id GROUP BY ic.name ORDER BY ia DESC';
+		
+		$db = static::getDB();
+		$stmt = $db->prepare($sql);
+		
+		$stmt->bindValue(':user_id', $this->user_id, PDO::PARAM_INT);
+		$stmt->bindValue(':earliestDate', $earliestDate, PDO::PARAM_STR);
+		$stmt->bindValue(':lastestDate', $lastestDate, PDO::PARAM_STR);
+		$stmt->execute();
+		
+		$incomes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		
+		$data = Array();
+		
+		foreach($incomes as $row) {
+			$data[] = Array(
+				'name'   => $row["name"],
+				'ia'  => floatval($row["ia"])
+			);
+		}
+		
+		echo json_encode($data);
+	}
 }
