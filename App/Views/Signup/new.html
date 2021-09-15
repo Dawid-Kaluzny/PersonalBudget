@@ -1,8 +1,8 @@
-{% extends "base.html" %}
+{% extends "main.html" %}
 
-{% block title %}Budżet domowy - zarejestruj się{% endblock %}
+{% block title %}Rejestracja | Budżet{% endblock %}
 
-{% block footer %}
+{% block script %}
 	<script src="/js/app.js"></script>
 	
 	<script>
@@ -41,41 +41,36 @@
 	
 {% endblock %}
 
-{% block body %}
+{% block form %}
 
-    <h1>Rejestracja</h1>
-
+	<h1 class="my-4"><span class="fw-bold text-primary">Reje</span><span class=" fw-bold text-warning">stra</span><span class="fw-bold text-success">cja</span></h1>
+	
 	{% if user.errors is not empty %}
 		<p>Błędy rejestracji:</p>
-		<ul>
+		<ul class="list-group list-group-flus mb-3">
 		{% for error in user.errors %}
-			<li>{{ error }}</li>
+			<li class="list-group-item list-group-item-danger">{{ error }}</li>
 		{% endfor %}
 		</ul>
 	{% endif %}
-
+				
 	<form method="post" action="/signup/create" id="formSignup">
-	
-		<div>
-			<label for="inputName">Imię</label>
-			<input id="inputName" name="name" placeholder="Imię" autofocus value="{{ user.name }}" required />
+
+		<div class="mx-5">
+			<input class="form-control mb-3" id="inputName" name="name" placeholder="Imię" autofocus value="{{ user.name }}" required />
 		</div>
-		<div>
-			<label for="inputEmail">Adres e-mail</label>
-			<input type="email" id="inputEmail" name="email" placeholder="Adres e-mail" value="{{ user.email }}" required />
+		<div class="mx-5">
+			<input class="form-control mb-3" type="email" id="inputEmail" name="email" placeholder="Adres e-mail" value="{{ user.email }}" required />
 		</div>
-		<div>
-			<label for="inputPassword">Hasło</label>
-			<input type="password" id="inputPassword" name="password" placeholder="Hasło" required />
+		<div class="mx-5">
+			<input class="form-control mb-3" type="password" id="inputPassword" name="password" placeholder="Hasło" required />
 		</div>
-		<div>
-			<label for="inputPasswordConfirmation">Powtórz hasło</label>
-			<input type="password" id="inputPasswordConfirmation" name="password_confirmation" placeholder="Powtórz hasło" required />
+		<div class="mx-5">
+			<input class="form-control mb-3" type="password" id="inputPasswordConfirmation" name="password_confirmation" placeholder="Powtórz hasło" required />
 		</div>
-		<div class="g-recaptcha" data-sitekey="6LdMaNQZAAAAACKeP4qGxXtF5yxCNcYDpkyn0dzZ"></div>
-		
-		<button type="submit">Zarejestruj się</button>
-	
+		<div class="g-recaptcha mb-3" data-sitekey="6LdMaNQZAAAAACKeP4qGxXtF5yxCNcYDpkyn0dzZ"></div>
+
+		<button class="btn btn-primary mb-5 mt-2 mx-5 w-50" type="submit">Zarejestruj się</button>
+
 	</form>
-	
 {% endblock %}
