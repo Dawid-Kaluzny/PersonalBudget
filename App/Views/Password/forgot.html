@@ -1,19 +1,18 @@
-{% extends "base.html" %}
+{% extends "main.html" %}
 
-{% block title %}Budżet domowy - reset hasła{% endblock %}
+{% block title %}Reset hasła | Budżet{% endblock %}
 
-{% block body %}
+{% block form %}
 
-    <h1>Prośba o zresetowanie hasła</h1>
+    <h1 class="my-4"><span class="fw-bold text-primary">Prośba o </span><span class="fw-bold text-warning">zresetowanie </span><span class="fw-bold text-success">hasła</span></h1>
 
 	<form method="post" action="/password/request-reset">
 
-		<div>
-			<label for="inputEmail">Adres e-mail</label>
-			<input type="email" id="inputEmail" name="email" placeholder="Adres e-mail" autofocus required />
+		<div class="mx-5">
+			<input class="form-control mb-3" type="email" id="inputEmail" name="email" placeholder="Adres e-mail" autofocus required />
 		</div>
 
-		<button type="submit">Wyślij</button>
+		<button class="btn btn-primary mb-5 mt-2 mx-5 w-50" type="submit">Wyślij</button>
 	
 	</form>
 
