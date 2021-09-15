@@ -19,6 +19,12 @@ class Home extends \Core\Controller
      */
     public function indexAction()
     {
-        View::renderTemplate('Home/index.html');
+		$current_user = new Auth();
+		
+		if($current_user->getUser()) {		
+			View::renderTemplate('Home/index.html');
+		} else {
+			View::renderTemplate('Login/new.html');
+		}
     }
 }

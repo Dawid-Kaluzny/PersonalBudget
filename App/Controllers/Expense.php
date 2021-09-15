@@ -14,24 +14,24 @@ use App\Models\UsersExpense;
 class Expense extends Authenticated
 {
 	/**
-     * Before filter - called before each action method
-     *
-     * @return void
-     */
-    protected function before()
-    {
-        parent::before();
-		
-		$this->users_expense = new UsersExpense();
-    }
+	 * Before filter - called before each action method
+	 *
+	 * @return void
+	 */
+	protected function before()
+	{
+		parent::before();
 	
-    /**
-     * Show the add expense
-     *
-     * @return void
-     */
-    public function addAction()
-    {		
+		$this->users_expense = new UsersExpense();
+	}
+	
+	/**
+	 * Show the add expense
+	 *
+	 * @return void
+	 */
+	public function addAction()
+	{		
 		$expense_categories = $this->users_expense->getExpensesCategories();
 		$method_payments = $this->users_expense->getMethodPayments();
 		
@@ -42,18 +42,18 @@ class Expense extends Authenticated
     }
 	
 	/**
-     * Add expense to user
-     *
-     * @return void
-     */
-    public function addExpenseAction()
-    {
-        if ($this->users_expense->addExpense($_POST)) {
+	 * Add expense to user
+	 *
+	 * @return void
+	 */
+	public function addExpenseAction()
+	{
+		if ($this->users_expense->addExpense($_POST)) {
 
-            Flash::addMessage('Wydatek został dodany!');
+			Flash::addMessage('Wydatek został dodany!');
 
-        } 
-		
+		} 
+
 		$this->redirect('/expense/add');
-    }
+	}
 }

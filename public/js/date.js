@@ -92,28 +92,28 @@ function calculateLastDayInMonth(year, month)
     var lastDayInMonth = 0;
 
     switch(month) {
-    case 1:
-    case 3:
-    case 5:
-    case 7:
-    case 8:
-    case 10:
-    case 12:
-        lastDayInMonth = 31;
-        break;
-    case 4:
-    case 6:
-    case 9:
-    case 11:
-        lastDayInMonth = 30;
-        break;
-    case 2: {
-        if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0))
-            lastDayInMonth = 29;
-        else
-            lastDayInMonth = 28;
-    }
-    break;
+		case 1:
+		case 3:
+		case 5:
+		case 7:
+		case 8:
+		case 10:
+		case 12:
+			lastDayInMonth = 31;
+			break;
+		case 4:
+		case 6:
+		case 9:
+		case 11:
+			lastDayInMonth = 30;
+			break;
+		case 2: {
+			if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0))
+				lastDayInMonth = 29;
+			else
+				lastDayInMonth = 28;
+		}
+		break;
     }
     return lastDayInMonth;
 }
@@ -201,19 +201,19 @@ function drawChart(jsonData) {
 	var data = new google.visualization.DataTable();
 	
 	data.addColumn('string', 'name');
-    data.addColumn('number', 'ea');
+	data.addColumn('number', 'ea');
 	
-	$.each(jsonData, function(i, jsonData){
-        var name = jsonData.name;
-        var amount = parseFloat(jsonData.ea);
-        data.addRows([[name, amount]]);
-    });
+	$.each(jsonData, function(i, jsonData) {
+		var name = jsonData.name;
+		var amount = parseFloat(jsonData.ea);
+		data.addRows([[name, amount]]);
+	});
 	
 	// Optional; add a title and set the width and height of the chart
 	var options = {
 		'title':'Twoje Wydatki',
-        is3D: true,
-    };
+		is3D: true,
+	};
 	
 	// Display the chart inside the <div> element with id="piechart"
 	var chart = new google.visualization.PieChart(document.getElementById('piechart'));
