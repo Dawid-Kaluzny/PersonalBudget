@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use \App\Auth;
 use \Core\View;
+use App\Models\Quote;
 
 /**
  * Home controller
@@ -21,8 +22,13 @@ class Home extends \Core\Controller
     {
 		$current_user = new Auth();
 		
-		if($current_user->getUser()) {		
-			View::renderTemplate('Home/index.html');
+		if($current_user->getUser()) {	
+			$quote = new Quote();
+			$quotes = $quote->getQuotes(3);
+			
+			View::renderTemplate('Home/index.html',[
+				'quotes' => $quotes
+			]);
 		} else {
 			View::renderTemplate('Login/new.html');
 		}

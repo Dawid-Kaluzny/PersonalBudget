@@ -1,15 +1,21 @@
-{% extends "base.html" %}
+{% extends "menu.html" %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Budżet{% endblock %}
 
-{% block body %}
+{% block form %}
+<h1 class="my-4"><span class="fw-bold text-primary">Cześć, </span><span class="fw-bold text-warning">Dawid</span><span class="fw-bold text-success">!</span></h1>
 
-    <h1>Welcome</h1>
+<p>Fajnie, że nas odwiedzasz 😄</p>
+<p>Mamy dla Ciebie garść inspirujących cytatów 😉</p>
 
-	{% if current_user %}
-		Cześć {{ current_user.name }}.
-		
-		<a href="/logout">Wyloguj się</a>
-	{% endif %}
+{% for quote in quotes %}
+	<figure class="text-center">
+		<blockquote class="blockquote">
+			<p>{{ quote.name }}</p>
+		</blockquote>
+		<figcaption class="blockquote-footer">{{ quote.author }}</figcaption>
+	</figure>
+{% endfor %}
 
 {% endblock %}
+
