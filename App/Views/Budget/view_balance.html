@@ -1,92 +1,79 @@
-{% extends "base.html" %}
+{% extends "menu.html" %}
 
-{% block title %}Budżet domowy - wyświetl bilans{% endblock %}
+{% block title %}Bilans | Budżet{% endblock %}
 
-{% block body %}
-
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-	<script src="https://www.gstatic.com/charts/loader.js"></script>	
-
-    <h1>Przeglądaj bilans</h1>
-	
-	<!-- Button to Open the Modal -->
-	<button type="button" class="btn btn-modal float-md-right" data-toggle="modal" data-target="#myModal">
-		Wybierz okres
-	</button>
-	
-	<!-- The Modal -->
-	<div class="modal fade" id="myModal">
-		<div class="modal-dialog">
-			<div class="modal-content">
-							  
-				<!-- Modal Header -->
-				<div class="modal-header">
-					<h4 class="modal-title">Wybierz okres</h4>
-								  
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-								  
-				</div>
-								
-				<!-- Modal body -->
-				<div class="modal-body">
-					<div id="date-range"></div>	
-					<div><a href="#" id="current-month">Bieżący miesiąc</a></div>
-					<div><a href="#" id="previous-month">Poprzedni miesiąc</a></div>
-					<div><a href="#" id="current-year">Bieżący rok</a></div>
-					<div><a href="#" id="custom-date">Niestandardowy</a></div>
-				</div>
-								
-				<!-- Modal footer -->
-				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" data-dismiss="modal">Zamknij</button>
-				</div>
-								
+{% block modal %}
+<!-- Modal -->
+<div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="myModalLabel">Wybierz okres</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div id="date-range"></div>	
+				<div><a href="#" id="current-month">Bieżący miesiąc</a></div>
+				<div><a href="#" id="previous-month">Poprzedni miesiąc</a></div>
+				<div><a href="#" id="current-year">Bieżący rok</a></div>
+				<div><a href="#" id="custom-date">Niestandardowy</a></div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Zamknij</button>
 			</div>
 		</div>
-	</div>	
-	
-	<div id="date-range-main"></div>
-	
-	<div>
-		<div class="row py-5">
-								
-			<div class="col-md-6 text-center table-balances">
-							
-				<h2>Przychody</h2>
-				
-				<table id="incomes">
-				</table>
-					
-			</div>	
-						
-			<div class="col-md-6 text-center table-balances">
-							
-				<h2>Wydatki</h2>
-				
-				<table id="expenses">
-				</table>
-						
-			</div>
-							
-		</div>
-		
-		<div class="row pl-5">
-					
-			<div class="col-md-12">
-						
-				<div id="balance-result"></div>
-
-			</div>
-					
-		</div>
-		
 	</div>
+</div>
+{% endblock %}
+
+{% block form %}
+<h1 class="mb-5 mt-4"><span class="fw-bold text-primary"><i class="icon-balance-scale"></i></span><span class="fw-bold text-warning"> Przeglądaj </span><span class="fw-bold text-success">bilans</span></h1>
+	
+<!-- Button to Open the Modal -->
+<button type="button" class="btn btn-primary float-end me-5" data-bs-toggle="modal" data-bs-target="#myModal">
+	Wybierz okres
+</button>
+	
+<div class="ms-5 text-start" id="date-range-main"></div>
+
+<div>
+	<div class="row mx-5 py-4">
+							
+		<div class="col-lg-6 text-center">
+						
+			<h2>Przychody</h2>
+			
+			<table class="table table-hover table-bordered" id="incomes">
+			</table>
 				
-	<div id="piechart"></div>
+		</div>	
+					
+		<div class="col-lg-6 text-center">
+						
+			<h2>Wydatki</h2>
+			
+			<table class="table table-hover table-bordered" id="expenses">
+			</table>
+					
+		</div>
+						
+	</div>
 	
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-	<script src="/js/date.js"></script>
+	<div class="row mx-5">
+				
+		<div class="col-md-12">
+					
+			<div id="balance-result"></div>
+
+		</div>
+				
+	</div>
 	
+</div>
+				
+<div id="piechart"></div>
+{% endblock %}
+
+{% block script %}
+<script src="/js/date.js"></script>
 {% endblock %}
