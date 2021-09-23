@@ -1,3 +1,5 @@
+var expensesData;
+
 function setCurrentDate()
 {
 	var today = new Date();
@@ -69,7 +71,7 @@ function viewDateCurrentYear()
 
 function viewCustomDate()
 {
-	document.getElementById("date-range").innerHTML = '<div class="text-right"> <label>Data początkowa <input type="date" id="start-date"></label> <label class="ml-3">Data końcowa <input type="date" id="end-date"></label> <input type="submit" class="d-block ml-auto" id="confirm" value="Pokaż"> </div>';
+	document.getElementById("date-range").innerHTML = '<div><label class="form-label" for="start-date">Data początkowa</label><input class="form-control" type="date" id="start-date"><label class="form-label mt-3">Data końcowa</label><input class="form-control" type="date" id="end-date"><button type="submit" class="btn btn-success my-3 w-50" id="confirm">Pokaż</button></div>';
 	
 	var today = new Date();
 	var year = today.getFullYear();
@@ -92,28 +94,28 @@ function calculateLastDayInMonth(year, month)
     var lastDayInMonth = 0;
 
     switch(month) {
-    case 1:
-    case 3:
-    case 5:
-    case 7:
-    case 8:
-    case 10:
-    case 12:
-        lastDayInMonth = 31;
-        break;
-    case 4:
-    case 6:
-    case 9:
-    case 11:
-        lastDayInMonth = 30;
-        break;
-    case 2: {
-        if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0))
-            lastDayInMonth = 29;
-        else
-            lastDayInMonth = 28;
-    }
-    break;
+		case 1:
+		case 3:
+		case 5:
+		case 7:
+		case 8:
+		case 10:
+		case 12:
+			lastDayInMonth = 31;
+			break;
+		case 4:
+		case 6:
+		case 9:
+		case 11:
+			lastDayInMonth = 30;
+			break;
+		case 2: {
+			if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0))
+				lastDayInMonth = 29;
+			else
+				lastDayInMonth = 28;
+		}
+		break;
     }
     return lastDayInMonth;
 }
@@ -140,13 +142,14 @@ function viewBalance(earliestDate, lastestDate)
 				incomesTable += '<tr><td>' + jsonData.name + '</td><td>' + jsonData.ia + '</td></tr>';
 			});
 			
-			incomesTable += '<tr><th>Razem</th><th>' + incomesSum + '</th></tr>';
+			incomesTable += '<tr class="table-light"><th>Razem</th><th>' + incomesSum + '</th></tr>';
 			document.getElementById("incomes").innerHTML = incomesTable;
 		});
 		
 	var expenseAjax = $.post("/budget/view-expenses-table", {earliestDate: earliestDate, lastestDate: lastestDate})
 		.done(function(data) {
 			var jsonData = JSON.parse(data);
+			expensesData = jsonData;
 
 			var expensesTable = '<caption>Wydatki</caption>';
 			
@@ -155,7 +158,7 @@ function viewBalance(earliestDate, lastestDate)
 				expensesTable += '<tr><td>' + jsonData.name + '</td><td>' + jsonData.ea + '</td></tr>';
 			});
 			
-			expensesTable += '<tr><th>Razem</th><th>' + expensesSum + '</th></tr>';
+			expensesTable += '<tr class="table-light"><th>Razem</th><th>' + expensesSum + '</th></tr>';
 			document.getElementById("expenses").innerHTML = expensesTable;
 			drawChart(jsonData);			
 		});
@@ -170,9 +173,9 @@ function setBalanceResult(incomesSum, expensesSum)
 	var balanceResult = parseFloat(incomesSum) - parseFloat(expensesSum);
 	var description = '';
 	if (parseFloat(balanceResult) >= parseFloat(0)) {
-		description = '<p>Bilans: <span class="color-result">' + balanceResult.toFixed(2) + '</span></p>Gratulacje. Świetnie zarządzasz finansami!';
+		description = '<p>Bilans: <span class="text-success">' + balanceResult.toFixed(2) + ' PLN</span></p>Gratulacje. Świetnie zarządzasz finansami!';
 	} else {
-		description = '<p>Bilans: <span class="error">' + balanceResult.toFixed(2) + '</span></p>Uważaj, wpadasz w długi!';
+		description = '<p>Bilans: <span class="text-danger">' + balanceResult.toFixed(2) + ' PLN</span></p>Uważaj, wpadasz w długi!';
 	}
 	document.getElementById("balance-result").innerHTML = description;	
 }
@@ -201,21 +204,25 @@ function drawChart(jsonData) {
 	var data = new google.visualization.DataTable();
 	
 	data.addColumn('string', 'name');
-    data.addColumn('number', 'ea');
+	data.addColumn('number', 'ea');
 	
-	$.each(jsonData, function(i, jsonData){
-        var name = jsonData.name;
-        var amount = parseFloat(jsonData.ea);
-        data.addRows([[name, amount]]);
-    });
+	$.each(jsonData, function(i, jsonData) {
+		var name = jsonData.name;
+		var amount = parseFloat(jsonData.ea);
+		data.addRows([[name, amount]]);
+	});
 	
 	// Optional; add a title and set the width and height of the chart
 	var options = {
 		'title':'Twoje Wydatki',
-        is3D: true,
-    };
+		is3D: true,
+	};
 	
 	// Display the chart inside the <div> element with id="piechart"
 	var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 	chart.draw(data, options);
 }
+
+$(window).resize(function() {
+	drawChart(expensesData);
+});

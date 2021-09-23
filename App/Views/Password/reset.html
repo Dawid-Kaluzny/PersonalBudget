@@ -1,8 +1,8 @@
-{% extends "base.html" %}
+{% extends "main.html" %}
 
-{% block title %}Budżet domowy - reset hasła{% endblock %}
+{% block title %}Reset hasła | Budżet{% endblock %}
 
-{% block footer %}
+{% block script %}
 	<script src="/js/app.js"></script>
 
 	<script>	
@@ -28,15 +28,15 @@
 	
 {% endblock %}
 
-{% block body %}
+{% block form %}
 
-    <h1>Resetowanie hasła</h1>
+    <h1 class="my-4"><span class="fw-bold text-primary">Reset</span><span class="fw-bold text-warning">owanie </span><span class="fw-bold text-success">hasła</span></h1>
 
 	{% if user.errors is not empty %}
 		<p>Błędy rejestracji:</p>
-		<ul>
+		<ul class="list-group list-group-flus mb-3">
 		{% for error in user.errors %}
-			<li>{{ error }}</li>
+			<li class="list-group-item list-group-item-danger">{{ error }}</li>
 		{% endfor %}
 		</ul>
 	{% endif %}
@@ -46,15 +46,13 @@
 		<input type="hidden" name="token" value="{{ token }}" />
 	
 		<div>
-			<label for="inputPassword">Hasło</label>
-			<input type="password" id="inputPassword" name="password" placeholder="Hasło" required />
+			<input class="form-control mb-3" type="password" id="inputPassword" name="password" placeholder="Hasło" required />
 		</div>
 		<div>
-			<label for="inputPasswordConfirmation">Powtórz hasło</label>
-			<input type="password" id="inputPasswordConfirmation" name="password_confirmation" placeholder="Powtórz hasło" required />
+			<input class="form-control mb-3" type="password" id="inputPasswordConfirmation" name="password_confirmation" placeholder="Powtórz hasło" required />
 		</div>
 		
-		<button type="submit">Zresetuj hasło</button>
+		<button class="btn btn-primary mb-5 mt-2 mx-5 w-50" type="submit">Zresetuj hasło</button>
 	
 	</form>
 	

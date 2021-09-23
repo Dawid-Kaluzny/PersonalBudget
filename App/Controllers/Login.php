@@ -14,23 +14,23 @@ use \Core\View;
  */
 class Login extends \Core\Controller
 {
-    /**
-     * Show the login page
-     *
-     * @return void
-     */
-    public function newAction()
-    {
-        View::renderTemplate('Login/new.html');
-    }
+	/**
+	 * Show the login page
+	 *
+	 * @return void
+	 */
+	public function newAction()
+	{
+		View::renderTemplate('Login/new.html');
+	}
 	
 	/**
-     * Log in a user
-     *
-     * @return void
-     */
-    public function createAction()
-    {
+	 * Log in a user
+	 *
+	 * @return void
+	 */
+	public function createAction()
+	{
 		$user = User::authenticate($_POST['email'], $_POST['password']);
 		
 		$remember_me = isset($_POST['remember_me']);
@@ -52,7 +52,7 @@ class Login extends \Core\Controller
 				'remember_me' => $remember_me
 			]);		
 		}
-    }
+	}
 	
 	/**
 	 * Log out a user

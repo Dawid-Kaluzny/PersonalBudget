@@ -12,15 +12,15 @@ use \Core\View;
  */
 class Signup extends \Core\Controller
 {
-    /**
-     * Show the signup page
-     *
-     * @return void
-     */
-    public function newAction()
-    {
-        View::renderTemplate('Signup/new.html');
-    }
+	/**
+	 * Show the signup page
+	 *
+	 * @return void
+	 */
+	public function newAction()
+	{
+		View::renderTemplate('Signup/new.html');
+	}
 	
 	/**
 	 * Sign up a new user
@@ -42,7 +42,7 @@ class Signup extends \Core\Controller
 			View::renderTemplate('Signup/new.html', [
 				'user' => $user
 			]);
-			
+		
 		}
 	}
 	

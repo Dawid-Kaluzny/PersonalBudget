@@ -1,3 +1,21 @@
+a:link {
+	text-decoration:none;
+}
+
+body {
+	background: url("/img/tlo.png") no-repeat center center fixed;
+	background-size: cover;	
+	font-family: 'Roboto', sans-serif;
+}
+
+nav > a, .nav-link {
+	color: #fff;
+}
+
+nav > a:hover, .nav-link:hover {
+	color: #fbc21f;
+}
+
 .alert {
 	border: 1px solid #ccc;
 	padding: 6px;
@@ -13,4 +31,30 @@
 
 .alert-warning {
 	background-color: #fcf8e3;
+}
+
+.bg-section {
+	background-color: #fff;
+	box-shadow: 1px 1px 15px 5px rgba(224,224,224,0.2);
+	opacity: 0.97;
+}
+
+.border-line {
+	border-bottom: 1px solid #dadde1;
+	margin: 20px 16px;
+}
+
+.g-recaptcha {
+	margin: 0 auto;
+	width: 304px;
+}
+
+.navbar {
+	background: linear-gradient(45deg, #33538c, #149dcc);
+}
+
+#piechart
+{   
+	min-height: 450px;
+    width: 100%;
 }
